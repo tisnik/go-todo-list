@@ -3,12 +3,14 @@ package main
 import (
 	"database/sql"
 	"log"
+	"strconv"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
 type TodoStorage interface {
 	ReadTodoList() ([]TODO, error)
+	AddNewTodoItem(dueTo, finished, priority, subject, details string) error
 }
 
 type StorageImpl struct {
@@ -53,9 +55,20 @@ func (s StorageImpl) ReadTodoList() ([]TODO, error) {
 			Finished: finished,
 			Priority: priority,
 			Subject:  subject,
-			Detauls:  details,
+			Details:  details,
 		})
 	}
 
 	return todoList, nil
+}
+
+func (s StorageImpl) AddNewTodoItem(dueTo, finished, priority, subject, details string) error {
+	finishedB := finished == "Yes" || finished == "y"
+	priorityI, err := strconv.Atoi(priority)
+	if err != nil {
+		return err
+	}
+	statement, err := s.connection.Prepare("INSERT INTO todo(due_to, finished, priority, subject, details) VALUES (?, ?, ?, ?, ?)")
+	_, err = statement.Exec(dueTo, finishedB, priorityI, subject, details)
+	return err
 }

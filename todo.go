@@ -6,5 +6,5 @@ type TODO struct {
 	Finished bool
 	Priority int
 	Subject  string
-	Detauls  string
+	Details  string
 }

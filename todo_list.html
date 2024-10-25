@@ -2,16 +2,16 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
-        <title>Go service</title>
+        <title>TODO list</title>
         <meta name="Author" content="Pavel Tisnovsky">
         <meta name="Generator" content="vim">
     </head>
     <body>
-        <h1>List of users</h1>
+        <h1>List of TODOs</h1>
         <table>
-            <tr><th>ID</th><th>Name</th><th>Surname</th></tr>
+            <tr><th>ID</th><th>Due to</th><th>Finished</th><th>Priority</th><th>Subject</th><th>Details</th></tr>
 {{range .}}
-<tr><td>{{.ID}}</td><td>{{.Name}}</td><td>{{.Surname}}</td></tr>
+<tr><td>{{.ID}}</td><td>{{.DueTo}}</td><td>{{.Finished}}</td><td>{{.Priority}}</td><td>{{.Subject}}</td><td>{{.Details}}</td></tr>
 {{end}}
         </table>
         <br />

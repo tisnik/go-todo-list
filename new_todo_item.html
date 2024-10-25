@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>TODO List</title>
+        <meta name="Author" content="Pavel Tisnovsky">
+        <meta name="Generator" content="vim">
+        <style>
+        form  { display: table;      }
+        p     { display: table-row;  }
+        label { display: table-cell; padding: 5px; }
+        input { display: table-cell; }
+        </style>
+    </head>
+    <body>
+        <h1>New TODO item</h1>
+        <form action="/add-new-todo-item" method="post">
+            <p>
+                <label>DueTo:</label>
+                <input name="due_to" />
+            </p>
+            <p>
+                <label>Finished:</label>
+                <input name="finished" />
+            </p>
+            <p>
+                <label>Priority:</label>
+                <input name="priority" />
+            </p>
+            <p>
+                <label>Subject:</label>
+                <input name="subject" />
+            </p>
+            <p>
+                <label>Details:</label>
+                <input name="details" />
+            </p>
+            <p>
+                <button type="submit">Add TODO item</button>
+            </p>
+        </form>
+        <br />
+        <a href="/">Back</a>
+    </body>
+</html>
