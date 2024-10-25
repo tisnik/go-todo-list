@@ -21,5 +21,6 @@ func main() {
 	log.Println("Connection to storage established", storage)
 
 	log.Println("Starting server on port", port)
-
+	server := NewServer(storage)
+	server.Serve(port)
 }
